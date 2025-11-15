@@ -1,1 +1,1 @@
-The Python code for the PEP-KO spread example in the Stochastic Differential Equation Modeling of Mean-Reverting Factors in Equity Markets paper by Frank Stearns. Colgate University, Department of Applied Mathematics.
+The Python code for the MA-V spread example in the Stochastic Differential Equation Modeling of Mean-Reverting Factors in Equity Markets paper by Frank Stearns. Colgate University, Department of Applied Mathematics.
