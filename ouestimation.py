@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from statsmodels.tsa.stattools import adfuller
 
 # ---------- CONFIG ----------
-TICKERS = ["PEP", "KO"]
+TICKERS = ["MA", "V"]
 START = "2018-01-01"
 END = None  # None -> up to today
 DT = 1/252.0  # daily sampling ~ 252 trading days/year
@@ -25,7 +25,7 @@ def download_prices(tickers, start, end):
       - Single ticker Series -> converted to DataFrame
     """
     data = yf.download(tickers, start=start, end=end, progress=False, auto_adjust=False)
-    # If yfinance returned MultiIndex (e.g. ('Adj Close', 'PEP'), ('Adj Close','KO'), ...)
+    # If yfinance returned MultiIndex (e.g. ('Adj Close', 'GM'), ('Adj Close','F'), ...)
     if isinstance(data.columns, pd.MultiIndex):
         # Prefer 'Adj Close' if present
         if 'Adj Close' in data.columns.levels[0]:
@@ -118,7 +118,7 @@ def main():
     df = download_prices(TICKERS, START, END)
     print("Downloaded data shape:", df.shape)
 
-    # compute log spread (PEP - KO)
+    # compute log spread (GM - F)
     spread = compute_log_spread(df, TICKERS[0], TICKERS[1])
     print("First 5 spread values:\n", spread.head())
 
